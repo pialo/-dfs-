@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-int visit[100] = {0};//¼ÇÂ¼ÊÇ·ñ·ÃÎÊ¹ı
+int visit[100] = {0};//è®°å½•æ˜¯å¦è®¿é—®è¿‡
 void dfs(int* number, int** edge, int begin,int n)
 {
 	visit[begin] = 1;
@@ -8,38 +8,38 @@ void dfs(int* number, int** edge, int begin,int n)
 	for (int k = 0; k < n; k++)
 	{
 		if (edge[begin][k] == 1 && visit[k] == 0)
-			dfs(number, edge, k,n);//??????
+			dfs(number, edge, k,n);//é€’å½’ä¾æ¬¡è°ƒç”¨
 	}
 }
 int main()
 {
-	int n;
+	int n;//èŠ‚ç‚¹æ•°ç›®
 	cin >> n;
-	int *number ;//½ÚµãÊı×é£¨1£¬2£¬3£¬4£¬5£¬6£©
+	
+	int *number ;//èŠ‚ç‚¹æ•°ç»„ï¼ˆ1ï¼Œ2ï¼Œ3ï¼Œ4ï¼Œ5ï¼Œ6ï¼‰
 	number = new int[n];
 	for (int i = 0; i < n; i++)
 		number[i] = i + 1;
-	int begin;
+	
+	int begin;//æœ€åˆçš„ç»™å®šèµ·ç‚¹
 	cin >> begin;
 	begin -= 1;
-	int **edge;//±ßÊı×é ¶şÎ¬
+	
+	int **edge;//è¾¹æ•°ç»„ äºŒç»´
 	edge = new int*[n];
 	for (int i = 0; i < n; i++)
 		edge[i] = new int[n];
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
 			cin >> edge[i][j];
+	
 	for (int i = 0; i < n; i++)
 	{
 		if (visit[begin] == 0)
 			dfs(number, edge, begin, n);
-		//cout << "´ÎÊı" <<endl<< i << endl;
 		if(visit[i]==0)
 			dfs(number, edge, i, n);
 	}
-	//cout << "number" << endl;
-	//for(int i=0;i<n;i++)
-	//cout << number[i];
 	system("pause");
 }
 
